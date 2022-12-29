@@ -1,0 +1,21 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  frontend:
+    build: ./Frontend
+
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+  backend:
+
+    build: ./Backend
+
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+      - MONGO_DB_CONNECTION_STRING="mongodb+srv://MizzleTheHorse:HestePik42069@backend-db-cloud-sdu.uknb4ny.mongodb.net/?retryWrites=true&w=majority"
+      - MONGO_DB_NAME=backend-db-cloud-sdu
+      - REDIS_URI=rediss://default:AVNS_yb9bvFQHIOg6k9gZuX_@redis-10916603-workemilmadsen-a001.aivencloud.com:27276
